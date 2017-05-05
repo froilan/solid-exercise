@@ -32,4 +32,4 @@ gradlew
 gradlew.bat
 test/functional/config/phantomjsdriver.log
 .slcache/*
-.class
+*.class
