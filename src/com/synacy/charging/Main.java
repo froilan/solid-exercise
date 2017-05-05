@@ -1,7 +1,8 @@
 package com.synacy.charging;
 
-import com.synacy.FaxMessage;
-import com.synacy.SmsMessage;
+import com.synacy.messages.FaxMessage;
+import com.synacy.messages.Message;
+import com.synacy.messages.SmsMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,13 +31,8 @@ public class Main {
 		List<Object> messages = generateMessages();
 
 		ChargingService chargingService = new ChargingService();
-		messages.forEach((message) -> {
-			if (message instanceof FaxMessage) {
-				chargingService.chargeFaxMessage((FaxMessage) message);
-			} else if (message instanceof SmsMessage) {
-				chargingService.chargeSmsMessage((SmsMessage) message);
-			}
-		});
+
+		messages.forEach((message) -> chargingService.chargeFaxMessage((Message) message));
 	}
 
 }

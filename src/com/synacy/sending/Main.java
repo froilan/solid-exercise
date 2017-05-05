@@ -1,7 +1,7 @@
 package com.synacy.sending;
 
-import com.synacy.FaxMessage;
-import com.synacy.SmsMessage;
+import com.synacy.messages.FaxMessage;
+import com.synacy.messages.SmsMessage;
 
 /**
  * Created by froilan on 5/5/17.
@@ -21,12 +21,12 @@ public class Main {
 		smsMessageToSend.send();
 
 		//fax message is able to send other types of messages
-		faxMessageToSend.sendStringMessage("some message");
-		faxMessageToSend.sendSmsMessage(smsMessageToSend);
+//		faxMessageToSend.sendStringMessage("some message");
+//		faxMessageToSend.sendSmsMessage(smsMessageToSend);
 
 		//sms message is able to send other types of messages
-		smsMessageToSend.sendStringMessage("some message");
-		smsMessageToSend.sendFaxMessage(faxMessageToSend);
+//		smsMessageToSend.sendStringMessage("some message");
+//		smsMessageToSend.sendFaxMessage(faxMessageToSend);
 	}
 
 }

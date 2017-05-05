@@ -1,27 +1,31 @@
-package com.synacy;
+package com.synacy.messages;
 
 import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
 
-public class SmsMessage extends MessageSender {
+public class SmsMessage implements Message {
 
 	Long pages;
 	String sendTo;
 	String content;
 
-	public SmsMessage(String sendTo, String content) {
-		this.content = content;
-		this.sendTo = sendTo;
-	}
+	MessageSender messageSender = new MessageSender();
 
+	public SmsMessage(String sendTo, String content) {
+		this.sendTo = sendTo;
+		this.content = content;
+		this.pages = pages;
+	}
+	@Override
 	public BigDecimal calculateCost() {
 		System.out.println("calculating cost for sms message");
 		return null;
 	}
-
+	@Override
 	public void send() {
-		this.sendSmsMessage(this);
+		messageSender.sendSmsMessage(this);
 	}
+
 
 }

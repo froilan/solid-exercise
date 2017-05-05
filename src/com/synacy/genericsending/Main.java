@@ -1,7 +1,7 @@
 package com.synacy.genericsending;
 
-import com.synacy.FaxMessage;
-import com.synacy.SmsMessage;
+import com.synacy.messages.FaxMessage;
+import com.synacy.messages.SmsMessage;
 
 import java.util.ArrayList;
 import java.util.Arrays;

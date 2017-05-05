@@ -1,7 +1,6 @@
 package com.synacy.genericsending;
 
-import com.synacy.FaxMessage;
-import com.synacy.SmsMessage;
+import com.synacy.messages.Message;
 
 /**
  * Created by froilan on 5/5/17.
@@ -9,11 +8,9 @@ import com.synacy.SmsMessage;
 public class GenericMessageSenderService {
 
 	public void send(Object message) {
-		if (message instanceof FaxMessage) {
-			((FaxMessage) message).send();
-		} else if (message instanceof SmsMessage) {
-			((SmsMessage) message).send();
-		}
+
+		((Message) message).send();
+
 		//some post sending logic here...
 	}
 
