@@ -6,13 +6,13 @@ import java.math.BigDecimal;
 
 public class ChargingService {
 
-    public void chargeMessageSender(Message message) {
+    public void chargeMessage(Message message) {
 
         BigDecimal cost = message.calculateCost();
-        chargeMessage(cost);
+        charge(cost);
     }
 
-	private void chargeMessage(BigDecimal bigDecimal) {
+	private void charge(BigDecimal bigDecimal) {
 		System.out.println("Charging...");
 		//charging logic...
 	}

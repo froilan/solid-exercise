@@ -32,7 +32,7 @@ public class Main {
 
 		ChargingService chargingService = new ChargingService();
 		messages.forEach((message) -> {
-			chargingService.chargeMessageSender(message);
+			chargingService.chargeMessage(message);
         });
 	}
 

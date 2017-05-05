@@ -19,11 +19,11 @@ public class Main {
         SmsMessage smsMessageToSend = new SmsMessage("633333333", "sms message");
 		smsMessageToSend.send();
 
-        //fax message is now unable to sendStringMessage since FaxMessage class is not a MessageSender !!!
+        //fax message is now unable to sendStringMessage since FaxMessage class is not a MessageSender
         //faxMessageToSend.sendStringMessage("some message");
         //faxMessageToSend.sendSmsMessage(smsMessageToSend);
 
-        //sms message is now unable to sendStringMessage since FaxMessage class is not a MessageSender !!!
+        //sms message is now unable to sendStringMessage since SmsMessage class is not a MessageSender
         //smsMessageToSend.sendStringMessage("some message");
         //smsMessageToSend.sendFaxMessage(faxMessageToSend);
 	}
