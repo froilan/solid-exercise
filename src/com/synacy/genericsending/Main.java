@@ -31,7 +31,7 @@ public class Main {
 	public static void main (String args[]) {
 		GenericMessageSenderService genericMessageSenderService = new GenericMessageSenderService();
 		generateMessages().forEach((message) -> {
-			genericMessageSenderService.send(message);
+			genericMessageSenderService.send((TypeHandler) message);
 		});
 	}
 }
