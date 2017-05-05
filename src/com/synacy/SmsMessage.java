@@ -4,13 +4,15 @@ import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
 
-public class SmsMessage extends MessageSender {
+public class SmsMessage implements Message  {
 
+	MessageSender sender;
 	Long pages;
 	String sendTo;
 	String content;
 
 	public SmsMessage(String sendTo, String content) {
+		sender = new MessageSender();
 		this.content = content;
 		this.sendTo = sendTo;
 	}
@@ -21,7 +23,7 @@ public class SmsMessage extends MessageSender {
 	}
 
 	public void send() {
-		this.sendSmsMessage(this);
+		sender.sendSmsMessage(this);
 	}
 
 }

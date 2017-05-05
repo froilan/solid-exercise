@@ -4,13 +4,15 @@ import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
 
-public class FaxMessage extends MessageSender {
+public class FaxMessage implements Message {
 
+	MessageSender sender;
 	Long duration;
 	String sendTo;
 	byte[] image;
 
 	public FaxMessage(String sendTo, byte[] image) {
+		sender = new MessageSender();
 		this.duration = duration;
 		this.sendTo = sendTo;
 		this.image = image;
@@ -22,7 +24,7 @@ public class FaxMessage extends MessageSender {
 	}
 
 	public void send() {
-		this.sendFaxMessage(this);
+		sender.sendFaxMessage(this);
 	}
 
 }
