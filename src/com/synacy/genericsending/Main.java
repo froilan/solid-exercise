@@ -1,7 +1,9 @@
 package com.synacy.genericsending;
 
 import com.synacy.FaxMessage;
+import com.synacy.Message;
 import com.synacy.SmsMessage;
+import com.synacy.sending.MessageSendFailedException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,8 +17,8 @@ public class Main {
 	/**
 	 * Assume this will be the messages that has to be sent and charged
 	 */
-	public static List<Object> generateMessages() {
-		return new ArrayList<Object>(Arrays.asList(new FaxMessage("631111111", "some fax message".getBytes()),
+	public static List<Message> generateMessages() {
+		return new ArrayList<Message>(Arrays.asList(new FaxMessage("631111111", "some fax message".getBytes()),
 				new FaxMessage("632222222", "some fax message".getBytes()),
 				new SmsMessage("633333333", "sms message"),
 				new SmsMessage("634444444", "sms message"),
@@ -31,7 +33,11 @@ public class Main {
 	public static void main (String args[]) {
 		GenericMessageSenderService genericMessageSenderService = new GenericMessageSenderService();
 		generateMessages().forEach((message) -> {
-			genericMessageSenderService.send(message);
+			try {
+				genericMessageSenderService.send(message);
+			} catch (MessageSendFailedException e) {
+				System.out.println(e.getMessage());
+			}
 		});
 	}
 }
