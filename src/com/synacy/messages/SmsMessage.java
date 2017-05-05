@@ -1,5 +1,6 @@
 package com.synacy.messages;
 
+import com.synacy.sending.MessageSendFailedException;
 import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
@@ -23,9 +24,7 @@ public class SmsMessage implements Message {
 		return null;
 	}
 	@Override
-	public void send() {
-		messageSender.sendSmsMessage(this);
-	}
+	public void send() throws MessageSendFailedException{messageSender.sendSmsMessage(this);}
 
 
 }

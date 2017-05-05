@@ -1,5 +1,7 @@
 package com.synacy.messages;
 
+import com.synacy.sending.MessageSendFailedException;
+
 import java.math.BigDecimal;
 
 /**
@@ -7,5 +9,5 @@ import java.math.BigDecimal;
  */
 public interface Message{
     public BigDecimal calculateCost();
-    public void send();
+    public void send()throws MessageSendFailedException;
 }
