@@ -1,4 +1,4 @@
-package com.synacy.message;
+package com.synacy;
 
 import com.synacy.sending.MessageSender;
 

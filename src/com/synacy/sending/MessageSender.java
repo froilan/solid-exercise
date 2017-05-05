@@ -1,7 +1,7 @@
 package com.synacy.sending;
 
-import com.synacy.message.FaxMessage;
-import com.synacy.message.SmsMessage;
+import com.synacy.FaxMessage;
+import com.synacy.SmsMessage;
 
 /**
  * This is a stable and well used class by other classes, so nothing should be changed here.

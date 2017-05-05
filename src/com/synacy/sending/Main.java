@@ -1,7 +1,7 @@
 package com.synacy.sending;
 
-import com.synacy.message.FaxMessage;
-import com.synacy.message.SmsMessage;
+import com.synacy.FaxMessage;
+import com.synacy.SmsMessage;
 
 /**
  * Created by froilan on 5/5/17.
