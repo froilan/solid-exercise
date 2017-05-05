@@ -3,6 +3,7 @@ package com.synacy.genericsending;
 import com.synacy.FaxMessage;
 import com.synacy.Message;
 import com.synacy.SmsMessage;
+import com.synacy.sending.MessageSendFailedException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +30,11 @@ public class Main {
 	public static void main (String args[]) {
 		GenericMessageSenderService<Message> genericMessageSenderService = new GenericMessageSenderService();
 		generateMessages().forEach((message) -> {
-			genericMessageSenderService.send(message);
+			try {
+				genericMessageSenderService.send(message);
+			} catch (MessageSendFailedException e) {
+				// handle message send fail exception here
+			}
 		});
 	}
 }

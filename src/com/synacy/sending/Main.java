@@ -13,11 +13,19 @@ public class Main {
 	 * */
 	public static void main(String args[]) {
 
-		Message faxMessageToSend = new FaxMessage("632222222", "some fax message".getBytes());
+        FaxMessage faxMessageToSend = new FaxMessage("632222222", "some fax message".getBytes());
 		faxMessageToSend.send();
 
-		Message smsMessageToSend = new SmsMessage("633333333", "sms message");
+        SmsMessage smsMessageToSend = new SmsMessage("633333333", "sms message");
 		smsMessageToSend.send();
+
+        //fax message is now unable to sendStringMessage since FaxMessage class is not a MessageSender !!!
+        //faxMessageToSend.sendStringMessage("some message");
+        //faxMessageToSend.sendSmsMessage(smsMessageToSend);
+
+        //sms message is now unable to sendStringMessage since FaxMessage class is not a MessageSender !!!
+        //smsMessageToSend.sendStringMessage("some message");
+        //smsMessageToSend.sendFaxMessage(faxMessageToSend);
 	}
 
 }
