@@ -31,12 +31,12 @@ public class Main {
 
 		ChargingService chargingService = new ChargingService();
 		messages.forEach((message) -> {
-			if (message instanceof FaxMessage) {
-				chargingService.chargeFaxMessage((FaxMessage) message);
-			} else if (message instanceof SmsMessage) {
-				chargingService.chargeSmsMessage((SmsMessage) message);
-			}
+			chargingService.chargeMessage((CostHandler) message);
+//			 if (message instanceof FaxMessage) {
+//				chargingService.chargeFaxMessage((FaxMessage) message);
+//			} else if (message instanceof SmsMessage) {
+//				chargingService.chargeSmsMessage((SmsMessage) message);
+//			}
 		});
 	}
-
 }
