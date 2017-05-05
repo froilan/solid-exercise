@@ -8,6 +8,6 @@ import java.math.BigDecimal;
 /**
  * Created by kenichigouang on 5/5/17.
  */
-public interface MessageHandler {
+public interface CostHandler {
     BigDecimal calculateCost();
 }
