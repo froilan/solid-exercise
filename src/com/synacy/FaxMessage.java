@@ -1,10 +1,11 @@
 package com.synacy;
 
+import com.synacy.sending.MessageSendFailedException;
 import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
 
-public class FaxMessage extends MessageSender {
+public class FaxMessage implements Message {
 
 	Long duration;
 	String sendTo;
@@ -16,13 +17,21 @@ public class FaxMessage extends MessageSender {
 		this.image = image;
 	}
 
+	@Override
 	public BigDecimal calculateCost() {
 		System.out.println("");
 		return null;
 	}
 
-	public void send() {
-		this.sendFaxMessage(this);
+	@Override
+	public void send() throws MessageSendFailedException {
+		MessageSender messageSender = new MessageSender();
+
+		if(sendTo.isEmpty() || image == null) {
+			throw new MessageSendFailedException("fax message send failed.");
+		}
+
+		messageSender.sendFaxMessage(this);
 	}
 
 }

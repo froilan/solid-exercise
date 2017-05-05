@@ -1,10 +1,11 @@
 package com.synacy;
 
+import com.synacy.sending.MessageSendFailedException;
 import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
 
-public class SmsMessage extends MessageSender {
+public class SmsMessage implements Message {
 
 	Long pages;
 	String sendTo;
@@ -15,13 +16,21 @@ public class SmsMessage extends MessageSender {
 		this.sendTo = sendTo;
 	}
 
+	@Override
 	public BigDecimal calculateCost() {
 		System.out.println("calculating cost for sms message");
 		return null;
 	}
 
-	public void send() {
-		this.sendSmsMessage(this);
+	@Override
+	public void send() throws MessageSendFailedException {
+		MessageSender messageSender = new MessageSender();
+
+		if(sendTo.isEmpty() && content.isEmpty()) {
+			throw new MessageSendFailedException("sms message send failed.");
+		}
+
+		messageSender.sendSmsMessage(this);
 	}
 
 }
