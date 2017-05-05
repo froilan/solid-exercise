@@ -1,4 +1,4 @@
-package com.synacy.sending;
+package com.synacy.services;
 
 /**
  * Created by froilan on 5/5/17.
