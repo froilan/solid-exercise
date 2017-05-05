@@ -1,6 +1,7 @@
 package com.synacy.charging;
 
 import com.synacy.FaxMessage;
+import com.synacy.Message;
 import com.synacy.SmsMessage;
 
 import java.util.ArrayList;
@@ -12,8 +13,8 @@ public class Main {
 	/**
 	 * Assume this will be the messages that has to be sent and charged
 	 */
-	public static List<Object> generateMessages() {
-		return new ArrayList<Object>(Arrays.asList(new FaxMessage("631111111", "some fax message".getBytes()),
+	public static List<Message> generateMessages() {
+		return new ArrayList<>(Arrays.asList(new FaxMessage("631111111", "some fax message".getBytes()),
 				new FaxMessage("632222222", "some fax message".getBytes()),
 				new SmsMessage("633333333", "sms message"),
 				new SmsMessage("634444444", "sms message"),
@@ -27,16 +28,12 @@ public class Main {
 	 * */
 	public static void main(String args[]) {
 
-		List<Object> messages = generateMessages();
+		List<Message> messages = generateMessages();
 
 		ChargingService chargingService = new ChargingService();
 		messages.forEach((message) -> {
-			if (message instanceof FaxMessage) {
-				chargingService.chargeFaxMessage((FaxMessage) message);
-			} else if (message instanceof SmsMessage) {
-				chargingService.chargeSmsMessage((SmsMessage) message);
-			}
-		});
+			chargingService.chargeMessageSender(message);
+        });
 	}
 
 }
