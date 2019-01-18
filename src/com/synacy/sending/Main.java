@@ -28,7 +28,6 @@ public class Main {
 		smsMessageToSend.sendStringMessage("some message");
 		smsMessageToSend.sendFaxMessage(faxMessageToSend);
 	}
-
 }
 
 

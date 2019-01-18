@@ -9,6 +9,7 @@ public class SmsMessage extends MessageSender {
 	Long pages;
 	String sendTo;
 	String content;
+	private SmsSender smsSender = new SmsSender();
 
 	public SmsMessage(String sendTo, String content) {
 		this.content = content;
@@ -21,7 +22,15 @@ public class SmsMessage extends MessageSender {
 	}
 
 	public void send() {
-		this.sendSmsMessage(this);
+		smsSender.sendSmsMessage(this);
+	}
+
+	private class SmsSender {
+		private MessageSender msgSender;
+
+		public void sendSmsMessage(SmsMessage smsMessage) {
+			msgSender.sendSmsMessage(smsMessage);
+		}
 	}
 
 }

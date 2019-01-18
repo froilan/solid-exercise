@@ -9,6 +9,7 @@ public class FaxMessage extends MessageSender {
 	Long duration;
 	String sendTo;
 	byte[] image;
+	private FaxSender faxSender = new FaxSender();
 
 	public FaxMessage(String sendTo, byte[] image) {
 		this.duration = duration;
@@ -22,7 +23,14 @@ public class FaxMessage extends MessageSender {
 	}
 
 	public void send() {
-		this.sendFaxMessage(this);
+		faxSender.sendFaxMessage(this);
 	}
 
+	private class FaxSender {
+		private MessageSender msgSender;
+
+		public void sendFaxMessage(FaxMessage faxMessage) {
+			msgSender.sendFaxMessage(faxMessage);
+		}
+	}
 }
