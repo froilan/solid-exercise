@@ -4,7 +4,7 @@ import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
 
-public class FaxMessage extends MessageSender {
+public class FaxMessage extends Message {
 
 	Long duration;
 	String sendTo;

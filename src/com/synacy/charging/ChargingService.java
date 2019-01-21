@@ -10,14 +10,8 @@ import java.math.BigDecimal;
  */
 public class ChargingService {
 
-	public void chargeFaxMessage(FaxMessage faxMessage) {
-		BigDecimal cost = faxMessage.calculateCost();
-		chargeMessage(cost);
-	}
-
-	public void chargeSmsMessage(SmsMessage smsMessage) {
-		BigDecimal cost = smsMessage.calculateCost();
-		chargeMessage(cost);
+	public void chargeMessage(Message message) {
+		message.calculateCost();
 	}
 
 	private void chargeMessage(BigDecimal bigDecimal) {
