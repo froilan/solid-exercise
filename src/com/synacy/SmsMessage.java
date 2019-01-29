@@ -1,11 +1,15 @@
 package com.synacy;
 
+import com.synacy.sending.MessageSender;
+
 import java.math.BigDecimal;
 
-public class SmsMessage implements Sendable{
+public class SmsMessage implements Sendable, Chargeable{
 	Long pages;
 	String sendTo;
 	String content;
+
+	private MessageSender msgSender = MessageSender();
 
 	public SmsMessage(String sendTo, String content) {
 		this.content = content;

@@ -1,12 +1,16 @@
 package com.synacy;
 
+import com.synacy.sending.MessageSender;
+
 import java.math.BigDecimal;
 
-public class FaxMessage implements Sendable{
+public class FaxMessage implements Sendable, Chargeable{
 
 	Long duration;
 	String sendTo;
 	byte[] image;
+
+	private MessageSender msgSender = new MessageSender();
 
 	public FaxMessage(String sendTo, byte[] image) {
 		this.duration = duration;
