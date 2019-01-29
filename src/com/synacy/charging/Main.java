@@ -29,8 +29,6 @@ public class Main {
 	 * */
 	public static void main(String args[]) {
 
-		List<Object> messages = generateMessages();
-
 		ChargingService chargingService = new ChargingService();
 		generateMessages().forEach((message) -> {
 			chargingService.chargeMessage(message);
