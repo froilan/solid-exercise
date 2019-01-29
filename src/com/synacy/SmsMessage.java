@@ -2,7 +2,7 @@ package com.synacy;
 
 import java.math.BigDecimal;
 
-public class SmsMessage extends Message{
+public class SmsMessage implements Sendable{
 	Long pages;
 	String sendTo;
 	String content;

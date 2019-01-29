@@ -2,7 +2,7 @@ package com.synacy;
 
 import java.math.BigDecimal;
 
-public class FaxMessage extends Message{
+public class FaxMessage implements Sendable{
 
 	Long duration;
 	String sendTo;
