@@ -14,11 +14,12 @@ public class Main {
 	 * Assume this will be the messages that has to be sent and charged
 	 */
 	public static List<Message> generateMessages() {
-		return new ArrayList<Message>(Arrays.asList(new FaxMessage("631111111", "some fax message".getBytes()),
+		final ArrayList<Message> messages = new ArrayList<>(Arrays.asList(new FaxMessage("631111111", "some fax message".getBytes()),
 				new FaxMessage("632222222", "some fax message".getBytes()),
 				new SmsMessage("633333333", "sms message"),
 				new SmsMessage("634444444", "sms message"),
 				new FaxMessage("63555555", "some fax message".getBytes())));
+		return messages;
 	}
 
 	/**
@@ -31,7 +32,7 @@ public class Main {
 		List<Object> messages = generateMessages();
 
 		ChargingService chargingService = new ChargingService();
-		messages.forEach((message) -> {
+		generateMessages().forEach((message) -> {
 			chargingService.chargeMessage(message);
 		});
 	}
