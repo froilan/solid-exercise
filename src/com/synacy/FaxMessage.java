@@ -1,15 +1,12 @@
 package com.synacy;
 
-import com.synacy.sending.MessageSender;
-
 import java.math.BigDecimal;
 
-public class FaxMessage extends Message {
+public class FaxMessage extends Message{
 
 	Long duration;
 	String sendTo;
 	byte[] image;
-	private FaxSender faxSender = new FaxSender();
 
 	public FaxMessage(String sendTo, byte[] image) {
 		this.duration = duration;
@@ -17,20 +14,14 @@ public class FaxMessage extends Message {
 		this.image = image;
 	}
 
+	@Override
 	public BigDecimal calculateCost() {
-		System.out.println("");
+		System.out.println("Calculating Cost for Fax Message");
 		return null;
 	}
 
+	@Override
 	public void send() {
-		faxSender.sendFaxMessage(this);
-	}
-
-	private class FaxSender {
-		private MessageSender msgSender;
-
-		public void sendFaxMessage(FaxMessage faxMessage) {
-			msgSender.sendFaxMessage(faxMessage);
-		}
+		msgSender.sendFaxMessage(this);
 	}
 }
