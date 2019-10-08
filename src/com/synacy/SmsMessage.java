@@ -1,12 +1,14 @@
 package com.synacy;
 
+import com.synacy.compress.MessageCompressor;
 import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
-public class SmsMessage extends MessageSender {
+public class SmsMessage extends MessageCompressor {
 
-	Long pages;
+	long parts;
 	String sendTo;
 	String content;
 
@@ -16,12 +18,16 @@ public class SmsMessage extends MessageSender {
 	}
 
 	public BigDecimal calculateCost() {
-		System.out.println("calculating cost for sms message");
-		return null;
+		System.out.println("calculating cost based part count");
+		return BigDecimal.valueOf(new Random().nextDouble());
 	}
 
-	public void send() {
-		this.sendSmsMessage(this);
+	public String getDestination() {
+		return sendTo;
+	}
+
+	public String generateCompressedMessage() {
+		return compressSmsMessage(content);
 	}
 
 }

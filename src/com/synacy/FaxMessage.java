@@ -1,28 +1,36 @@
 package com.synacy;
 
-import com.synacy.sending.MessageSender;
+import com.synacy.compress.ImageType;
+import com.synacy.compress.MessageCompressor;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
-public class FaxMessage extends MessageSender {
+public class FaxMessage extends MessageCompressor {
 
-	Long duration;
+	long duration;
 	String sendTo;
 	byte[] image;
+	ImageType imageType;
 
-	public FaxMessage(String sendTo, byte[] image) {
+	public FaxMessage(String sendTo, byte[] image, ImageType imageType, long duration) {
 		this.duration = duration;
 		this.sendTo = sendTo;
 		this.image = image;
+		this.imageType = imageType;
 	}
 
 	public BigDecimal calculateCost() {
-		System.out.println("");
-		return null;
+		System.out.println("calculating cost based on duration and image size...");
+		return BigDecimal.valueOf(new Random().nextDouble());
 	}
 
-	public void send() {
-		this.sendFaxMessage(this);
+	public String getDestination() {
+		return sendTo;
+	}
+
+	public String generateCompressedMessage() {
+		return compressFaxMessage(image, imageType);
 	}
 
 }

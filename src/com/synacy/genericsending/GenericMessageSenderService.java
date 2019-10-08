@@ -10,9 +10,13 @@ public class GenericMessageSenderService {
 
 	public void send(Object message) {
 		if (message instanceof FaxMessage) {
-			((FaxMessage) message).send();
+			String faxCompressedMessage = ((FaxMessage) message).generateCompressedMessage();
+			String destination = ((FaxMessage) message).getDestination();
+			//some fax sending specific logic here that uses destination and the compressed message.
 		} else if (message instanceof SmsMessage) {
-			((SmsMessage) message).send();
+			String smsCompressedMessage = ((SmsMessage) message).generateCompressedMessage();
+			String destination = ((SmsMessage) message).getDestination();
+			//some fax sending specific logic here that uses destination and the compressed message.
 		}
 		//some post sending logic here...
 	}
