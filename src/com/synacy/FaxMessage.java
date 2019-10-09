@@ -21,7 +21,7 @@ public class FaxMessage extends MessageCompressor {
 	}
 
 	public BigDecimal calculateCost() {
-		System.out.println("calculating cost based on duration and image size...");
+		System.out.println("calculating fax cost based on duration and image size...");
 		return BigDecimal.valueOf(new Random().nextDouble());
 	}
 

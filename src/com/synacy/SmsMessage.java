@@ -1,7 +1,6 @@
 package com.synacy;
 
 import com.synacy.compress.MessageCompressor;
-import com.synacy.sending.MessageSender;
 
 import java.math.BigDecimal;
 import java.util.Random;
@@ -18,7 +17,7 @@ public class SmsMessage extends MessageCompressor {
 	}
 
 	public BigDecimal calculateCost() {
-		System.out.println("calculating cost based part count");
+		System.out.println("calculating sms cost based part count");
 		return BigDecimal.valueOf(new Random().nextDouble());
 	}
 
