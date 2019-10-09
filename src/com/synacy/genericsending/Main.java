@@ -1,11 +1,10 @@
 package com.synacy.genericsending;
 
 import com.synacy.FaxMessage;
+import com.synacy.Sendable;
 import com.synacy.SmsMessage;
 import com.synacy.compress.ImageType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,7 +15,7 @@ public class Main {
 	/**
 	 * Assume this will be the messages that has to be sent
 	 */
-	public static List<Object> generateMessages() {
+	public static List<Sendable> generateMessages() {
 		return List.of(new FaxMessage("631111111", "some jpeg image".getBytes(), ImageType.JPEG, 100),
 				new FaxMessage("632222222", "some tiff image".getBytes(), ImageType.TIFF, 100),
 				new SmsMessage("633333333", "sms message"),
@@ -30,8 +29,10 @@ public class Main {
 	 * How would we remove these if statements, but retain GenericMessageSenderService's capability to send any message types?
 	 * */
 	public static void main (String args[]) {
+
 		GenericMessageSenderService genericMessageSenderService = new GenericMessageSenderService();
-		List<Object> generatedMessages = generateMessages();
+		List<Sendable> generatedMessages = generateMessages();
 		generatedMessages.forEach(genericMessageSenderService::send);
+
 	}
 }
