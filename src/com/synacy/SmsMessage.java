@@ -5,7 +5,7 @@ import com.synacy.compress.MessageCompressor;
 import java.math.BigDecimal;
 import java.util.Random;
 
-public class SmsMessage extends MessageCompressor {
+public class SmsMessage implements Chargeable, Sendable, Compressible {
 
 	long parts;
 	String sendTo;
@@ -16,17 +16,20 @@ public class SmsMessage extends MessageCompressor {
 		this.sendTo = sendTo;
 	}
 
+	@Override
+	public String generateCompressedMessage() {
+		return new MessageCompressor().compressSmsMessage(content);
+	}
+
+	@Override
 	public BigDecimal calculateCost() {
 		System.out.println("calculating sms cost based part count");
 		return BigDecimal.valueOf(new Random().nextDouble());
 	}
 
+	@Override
 	public String getDestination() {
 		return sendTo;
-	}
-
-	public String generateCompressedMessage() {
-		return compressSmsMessage(content);
 	}
 
 }

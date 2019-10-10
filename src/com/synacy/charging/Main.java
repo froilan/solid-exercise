@@ -1,5 +1,6 @@
 package com.synacy.charging;
 
+import com.synacy.Chargeable;
 import com.synacy.FaxMessage;
 import com.synacy.SmsMessage;
 import com.synacy.compress.ImageType;
@@ -13,7 +14,7 @@ public class Main {
 	/**
 	 * Assume this will be the messages that has to be charged
 	 */
-	public static List<Object> generateMessages() {
+	public static List<Chargeable> generateMessages() {
 		return List.of(new FaxMessage("631111111", "some jpeg image".getBytes(), ImageType.JPEG, 100),
 				new FaxMessage("632222222", "some tiff image".getBytes(), ImageType.TIFF, 100),
 				new SmsMessage("633333333", "sms message"),
@@ -28,15 +29,11 @@ public class Main {
 	 * */
 	public static void main(String args[]) {
 
-		List<Object> messages = generateMessages();
+		List<Chargeable> messages = generateMessages();
 
 		ChargingService chargingService = new ChargingService();
 		messages.forEach((message) -> {
-			if (message instanceof FaxMessage) {
-				chargingService.chargeFaxMessage((FaxMessage) message);
-			} else if (message instanceof SmsMessage) {
-				chargingService.chargeSmsMessage((SmsMessage) message);
-			}
+			chargingService.chargeMessage(message);
 		});
 	}
 

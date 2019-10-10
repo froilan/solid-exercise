@@ -1,7 +1,6 @@
 package com.synacy.charging;
 
-import com.synacy.FaxMessage;
-import com.synacy.SmsMessage;
+import com.synacy.Chargeable;
 
 import java.math.BigDecimal;
 
@@ -10,17 +9,12 @@ import java.math.BigDecimal;
  */
 public class ChargingService {
 
-	public void chargeFaxMessage(FaxMessage faxMessage) {
-		BigDecimal cost = faxMessage.calculateCost();
-		chargeMessage(cost);
+	public void chargeMessage(Chargeable message) {
+		BigDecimal cost = message.calculateCost();
+		printChargeMessage(cost);
 	}
 
-	public void chargeSmsMessage(SmsMessage smsMessage) {
-		BigDecimal cost = smsMessage.calculateCost();
-		chargeMessage(cost);
-	}
-
-	private void chargeMessage(BigDecimal bigDecimal) {
+	private void printChargeMessage(BigDecimal bigDecimal) {
 		System.out.println("Charging...");
 		//charging logic...
 	}
